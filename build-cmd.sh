@@ -9,8 +9,8 @@ set -x
 # make errors fatal
 set -e
 
-BOOST_VERSION="1.68.0"
-BOOST_SOURCE_DIR="boost_1_68_0"
+BOOST_VERSION="1.60.0"
+BOOST_SOURCE_DIR="boost_1_60_0"
 
 if [ -z "$AUTOBUILD" ] ; then
     fail
@@ -33,15 +33,14 @@ build_linux()
     shift
 
     mkdir -p "$prefix/lib"
-#    mkdir -p "$prefix/include/boost/coroutine/detail"
-#    rm -rf stage
+    mkdir -p "$prefix/include/boost/dcoroutine/detail"
 
-    ./bootstrap.sh --with-toolset=gcc --with-libraries="date_time,filesystem,program_options,regex,signals,system,thread" --without-icu 
+    ./bootstrap.sh --with-toolset=gcc --with-libraries="context,date_time,filesystem,program_options,regex,signals,system,thread" --without-icu
     ./b2 -j $cores -a address-model=$bits "$*" $RELEASE_BOOST_BJAM_OPTIONS --stagedir="$prefix/lib" stage
     mv "$prefix/lib/lib" "$prefix/lib/release"
     ./b2 -j $cores -a address-model=$bits "$*" $DEBUG_BOOST_BJAM_OPTIONS --prefix="$prefix" --libdir="$prefix/lib/debug" install
-#    cp -r "$top"/boost-coroutine/*.hpp "$prefix/include/boost/coroutine"
-#    cp -r "$top"/boost-coroutine/detail/*.hpp "$prefix/include/boost/coroutine/detail"
+    cp -r "$top"/boost-coroutine/*.hpp "$prefix/include/boost/dcoroutine"
+    cp -r "$top"/boost-coroutine/detail/*.hpp "$prefix/include/boost/dcoroutine/detail"
 }
 
 BOOST_BJAM_OPTIONS="--layout=tagged -sNO_BZIP2=1 link=shared threading=multi runtime-link=shared"

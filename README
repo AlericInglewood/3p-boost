@@ -10,8 +10,8 @@ and unpack it in the root of the project.
 
 For example,
 
-$ wget https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.bz2
-$ tar xf boost_1_68_0.tar.bz2
+$ wget https://where-ever/boost_1_60_0.tar.bz2
+$ tar xf boost_1_60_0.tar.bz2
 
 Fix BOOST_VERSION and BOOST_SOURCE_DIR in build-cmd.sh if needed.
 

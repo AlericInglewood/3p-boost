@@ -162,10 +162,10 @@
     </map>
     <key>package_description</key>
     <map>
-      <key>description</key>
-      <string>Boost C++ Libraries</string>
       <key>copyright</key>
       <string>(see individual source files)</string>
+      <key>description</key>
+      <string>Boost C++ Libraries</string>
       <key>license</key>
       <string>boost 1.0</string>
       <key>license_file</key>
